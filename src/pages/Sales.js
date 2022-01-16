@@ -10,7 +10,7 @@ import $ from 'jquery';
 import { CartItemSizeSelector } from '../components/CartItemSizeSelector';
 import { SaleContent } from '../components/SaleContent';
 import { BottomNavigationBar } from '../layout/BottomNavigationBar';
-import bonnetImg from '../images/bonnet-search.jpg';
+import bonnetImg from '../images/logo.jpg';
 import { MostPopular } from '../components/MostPopular';
 
 
@@ -33,7 +33,7 @@ export const Sales = () =>{
                         <SaleContent data={data} key={key} />
                     )):
                     <div hidden={!didSearch} className="centered pad">
-                        <div className="pad">
+                        <div className="no-result-img-container">
                             <img src={bonnetImg} alt="" />
                         </div>
                         <p>Your search <strong>{searchValue}</strong> did not match anything</p>

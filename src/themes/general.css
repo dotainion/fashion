@@ -1352,3 +1352,9 @@ h4{
 .inline{
     display: inline-block;
 }
+.no-result-img-container{
+    padding: 10px;
+}
+.no-result-img-container img{
+    width: 150px;
+}
