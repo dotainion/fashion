@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { MenuContainer } from '../container/MenuContainer';
-import { useNavigate, useLocation } from "react-router-dom";
 import { useStore } from '../state/Store';
 import { SaleContent } from '../components/SaleContent';
 import bonnetImg from '../images/logo.jpg';
@@ -8,14 +7,10 @@ import { MostPopular } from '../components/MostPopular';
 
 
 export const Sales = () =>{
-    const { products, searchValue } = useStore();
-
-    const navigate = useNavigate();
-    const location = useLocation();
-
+    const { products, searchValue, firstLoad } = useStore();
 
     useEffect(()=>{
-        console.log(products)
+        
     }, [products]);
     return(
         <MenuContainer hideHomeNav >
@@ -25,7 +20,7 @@ export const Sales = () =>{
                     products.map((data, key)=>(
                         <SaleContent data={data} key={key} />
                     )):
-                    <div className="centered pad">
+                    <div hidden={firstLoad} className="centered pad">
                         <div className="no-result-img-container">
                             <img src={bonnetImg} alt="" />
                         </div>

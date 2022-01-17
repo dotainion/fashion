@@ -18,6 +18,7 @@ export const StoreContext = ({children}) =>{
     const [cartItemsTotal, setCartItemsTotal] = useState("");
     const [deliveryType, setDeliveryType] = useState("");
     const [searchValue, setSearchValue] = useState("");
+    const [firstLoad, setFirstLoad] = useState(true);
 
     const initShippingInfo = async(id) =>{
         setShippingInfo(await getShippingInfo(id));
@@ -29,6 +30,7 @@ export const StoreContext = ({children}) =>{
         const products = tools.prodImageSanitize(dbProducts);
         setProducts(products);
         setLoading(false);
+        setFirstLoad(false);
     }
 
     const productsByType = async(type) =>{
@@ -160,6 +162,7 @@ export const StoreContext = ({children}) =>{
         productsByCategory,
         cartItems,
         addToCart,
+        firstLoad,
         onUpdateQty,
         clearCart,
         searchValue,
