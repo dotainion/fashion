@@ -18,7 +18,6 @@ export const StoreContext = ({children}) =>{
     const [cartItemsTotal, setCartItemsTotal] = useState("");
     const [deliveryType, setDeliveryType] = useState("");
     const [searchValue, setSearchValue] = useState("");
-    const [didSearch, setDidSearch] = useState(false);
 
     const initShippingInfo = async(id) =>{
         setShippingInfo(await getShippingInfo(id));
@@ -26,7 +25,6 @@ export const StoreContext = ({children}) =>{
 
     const initProducts = async() =>{
         setLoading(true);
-        setDidSearch(false);
         const dbProducts = await getProducts(100);
         const products = tools.prodImageSanitize(dbProducts);
         setProducts(products);
@@ -35,7 +33,6 @@ export const StoreContext = ({children}) =>{
 
     const productsByType = async(type) =>{
         setLoading(true);
-        setDidSearch(false);
         const dbProducts = await getProductsByType(type, 100);
         const products = tools.prodImageSanitize(dbProducts);
         setProducts(products);
@@ -44,7 +41,6 @@ export const StoreContext = ({children}) =>{
 
     const productsByCategory = async(category) =>{
         setLoading(true);
-        setDidSearch(false);
         const dbProducts = await getProductsByCategory(category, 100);
         const products = tools.prodImageSanitize(dbProducts);
         setProducts(products);
@@ -57,12 +53,10 @@ export const StoreContext = ({children}) =>{
         const dbProducts = await getProductsByTitle(searchVal);
         const products = tools.prodImageSanitize(dbProducts);
         setProducts(products);
-        setDidSearch(true);
         setLoading(false);
     }
 
     const addToCart = (item, qty=1, del=false, refresh=false) =>{
-        console.log(item);
         let itemExist = false;
         let tempProducts = [];
         for (let product of cartItems){
@@ -168,7 +162,6 @@ export const StoreContext = ({children}) =>{
         addToCart,
         onUpdateQty,
         clearCart,
-        didSearch,
         searchValue,
         shippingInfo,
         initProducts,

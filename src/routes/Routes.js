@@ -1,4 +1,5 @@
 export const routes = {
+    pageNotFound: "*",
     home: "/",
     default: "/",
     singin: "/sign/in",

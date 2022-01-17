@@ -23,6 +23,7 @@ import { Orders } from "./checkout/Orders";
 import { Test } from "./test/Test";
 import { Settings } from "./admin/Settings";
 import { AdminOrders } from "./checkout/AdminOrders";
+import { PageNotFound } from './error/PageNotFound';
 
 
 const App = () => {
@@ -43,6 +44,7 @@ const App = () => {
             <Route path={routes.singin} element={<SignIn/>}/>
             <Route path={routes.register} element={<Register/>}/>
             <Route path={"/test"} element={<Test/>}/>
+            <Route path={routes.pageNotFound} element={<PageNotFound/>}/>
           </Routes>
         </StoreContext>
       </AuthContext>

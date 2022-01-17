@@ -1,21 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { ColorsAvailable } from '../components/ColorsAvailable';
 import { MenuContainer } from '../container/MenuContainer';
-import defaultImage from '../images/dress.jpeg';
 import { useNavigate, useLocation } from "react-router-dom";
 import { useStore } from '../state/Store';
-import { routes } from '../routes/Routes';
-import { SizesAvailable } from '../components/SizesAvailable';
-import $ from 'jquery';
-import { CartItemSizeSelector } from '../components/CartItemSizeSelector';
 import { SaleContent } from '../components/SaleContent';
-import { BottomNavigationBar } from '../layout/BottomNavigationBar';
 import bonnetImg from '../images/logo.jpg';
 import { MostPopular } from '../components/MostPopular';
 
 
 export const Sales = () =>{
-    const { products, addToCart, searchValue, didSearch } = useStore();
+    const { products, searchValue } = useStore();
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -32,7 +25,7 @@ export const Sales = () =>{
                     products.map((data, key)=>(
                         <SaleContent data={data} key={key} />
                     )):
-                    <div hidden={!didSearch} className="centered pad">
+                    <div className="centered pad">
                         <div className="no-result-img-container">
                             <img src={bonnetImg} alt="" />
                         </div>

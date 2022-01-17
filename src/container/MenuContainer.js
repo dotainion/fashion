@@ -16,11 +16,6 @@ export const MenuContainer = ({children, hideHomeNav}) =>{
 
     const [hideNav, setHideNav] = useState(false);
 
-    const onScroll = (e) =>{
-        if (e.currentTarget.scrollTop > 300) setHideNav(true);
-        else setHideNav(false);
-    }
-
     const onFilter = (type=null) =>{
         if (type === null){
             initProducts(); 
@@ -48,11 +43,11 @@ export const MenuContainer = ({children, hideHomeNav}) =>{
                                     <img src={offer} alt="" />
                                     <h4>Filer</h4>
                                     {Object.values(optionalProductTypes).map((type, key)=>(
-                                        <div onClick={()=>onFilter(type)} className="pad-mini" key={key}>
+                                        <div onClick={()=>onFilter(type)} className="side-menu-filter-hover" key={key}>
                                             <label>{type}</label>
                                         </div>
                                     ))}
-                                    <div onClick={()=>onFilter()} className="pad-mini">
+                                    <div onClick={()=>onFilter()} className="side-menu-filter-hover">
                                         <label>VIEW ALL</label>
                                     </div>
                                 </div>
