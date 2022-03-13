@@ -9,6 +9,7 @@ import { useStore } from '../state/Store';
 import { BottomNavigationBar } from '../layout/BottomNavigationBar';
 import { MostPopular } from '../components/MostPopular';
 import $ from 'jquery';
+import { app } from '../contents/appInfos';
 
 
 export const MenuContainer = ({children, hideHomeNav}) =>{
@@ -39,7 +40,7 @@ export const MenuContainer = ({children, hideHomeNav}) =>{
                         <div className="side-menu-container">
                             <div className="side-menu-inner-container">
                                 <div className="side-menu-filter-container">
-                                    <div className="side-menu-hader">PRETTY LITTLE THINGS</div>
+                                    <div className="side-menu-hader">{app.name}</div>
                                     <img src={offer} alt="" />
                                     <h4>Filer</h4>
                                     {Object.values(optionalProductTypes).map((type, key)=>(

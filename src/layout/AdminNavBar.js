@@ -23,8 +23,8 @@ export const AdminNavBar = ({}) =>{
 
     return(
         <div className="admin-nav-bar">
+            <h2>{titleCase(location.pathname)}</h2>
             <div>
-                <h2>{titleCase(location.pathname)}</h2>
                 <span onClick={()=>navigate(routes.home)}>Home</span>
                 <span hidden={hide(routes.productsEdit)} onClick={()=>navigate(routes.productsEdit)}>Products</span>
                 <span hidden={hide(routes.profile)} onClick={()=>navigate(routes.profile)}>Data Entry</span>

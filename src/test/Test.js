@@ -2,6 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import { getSearch } from '../data/Collection';
 import { autoSave } from '../tools/AutoSave';
 import { Input } from '../Widgets/Input';
+import { Checkbox } from '../Widgets/Checkbox';
+import { Textarea } from '../Widgets/Textarea';
+import { Select } from '../Widgets/Select';
 
 
 export const Test = () =>{
@@ -16,8 +19,10 @@ export const Test = () =>{
     }, []);
     return(
         <div className="text-center">
-            <Input />
-            <button onClick={search} className="btn">Search</button>
+            <Input title={'testing title'} />
+            <Checkbox title={'this is a test'} />
+            <Textarea title={'this is a test'} />
+            <Select title={'hello world'} />
         </div>
     )
 }

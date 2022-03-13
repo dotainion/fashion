@@ -5,18 +5,16 @@ import { ColorsAvailable } from "./ColorsAvailable";
 import { CartItemSizeSelector } from "./CartItemSizeSelector";
 import { useNavigate, useLocation } from "react-router-dom";
 import { routes } from "../routes/Routes";
+import { useStore } from "../state/Store";
 
 export const SaleContent = ({data}) =>{
+    const { onViewProduct } = useStore();
+
     const navigate = useNavigate();
 
     const imgRef = useRef();
     const sizeRef = useRef();
     const containerRef = useRef();
-
-    const onViewProduct = (data, imgageIndex=0) =>{
-        data["info"]["imgageIndex"] = imgageIndex;
-        navigate(routes.product + data?.id, {state: data});
-    }
 
     const onShowSelector = (e) =>{
         e?.stopPropagation();

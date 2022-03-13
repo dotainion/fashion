@@ -1,7 +1,9 @@
 import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/Auth';
 import { Loading } from '../components/Loading';
 import { addUser, getProducts, getProductsByCategory, getProductsByTitle, getProductsByType, getShippingInfo, getUser } from '../data/Database';
+import { routes } from '../routes/Routes';
 import { tools } from '../tools/Tools';
 
 
@@ -11,6 +13,8 @@ export const useStore = () => useContext(StoreContextProvider);
 export const StoreContext = ({children}) =>{
     const { user } = useAuth();
 
+    const navigate = useNavigate();
+
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
     const [cartItems, setCartItems] = useState([]);
@@ -19,6 +23,13 @@ export const StoreContext = ({children}) =>{
     const [deliveryType, setDeliveryType] = useState("");
     const [searchValue, setSearchValue] = useState("");
     const [firstLoad, setFirstLoad] = useState(true);
+    const [landingProducts, setlandingProduts] = useState([]);
+
+    const initLandingPageProducts = async() =>{
+        const dbProducts = await getProductsByTitle('Round bag');
+        const products = tools.prodImageSanitize(dbProducts);
+        setlandingProduts(products);
+    }
 
     const initShippingInfo = async(id) =>{
         setShippingInfo(await getShippingInfo(id));
@@ -138,6 +149,11 @@ export const StoreContext = ({children}) =>{
     const changeDeliveryType = (type) =>{ 
         setDeliveryType(type);
     }
+    
+    const onViewProduct = (data, imgageIndex=0) =>{
+        data["info"]["imgageIndex"] = imgageIndex;
+        navigate(routes.product + data?.id, {state: data});
+    }
 
     useEffect(()=>{
         let subTotal = 0;
@@ -150,6 +166,7 @@ export const StoreContext = ({children}) =>{
     useEffect(()=>{
         initCartItem();
         initProducts();
+        initLandingPageProducts();
     }, []);
 
     useEffect(()=>{
@@ -172,7 +189,9 @@ export const StoreContext = ({children}) =>{
         deliveryType,
         holdCheckout,
         productsSearch,
-        changeDeliveryType
+        changeDeliveryType,
+        landingProducts,
+        onViewProduct
     }
     return(
         <StoreContextProvider.Provider value={providerValue}>

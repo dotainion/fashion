@@ -24,6 +24,7 @@ import { Test } from "./test/Test";
 import { Settings } from "./admin/Settings";
 import { AdminOrders } from "./checkout/AdminOrders";
 import { PageNotFound } from './error/PageNotFound';
+import { LandingPage } from './pages/LandingPage';
 
 
 const App = () => {
@@ -43,6 +44,7 @@ const App = () => {
             <Route path={routes.settings} element={<AuthValidator component={Settings}/>}/>
             <Route path={routes.singin} element={<SignIn/>}/>
             <Route path={routes.register} element={<Register/>}/>
+            <Route path={routes.landingPage} element={<LandingPage/>}/>
             <Route path={"/test"} element={<Test/>}/>
             <Route path={routes.pageNotFound} element={<PageNotFound/>}/>
           </Routes>

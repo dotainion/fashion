@@ -147,6 +147,8 @@ export const Products = () =>{
     const onEditShow = () =>{
         setSmallImg({height: "15vh"});
         $(showDataRef.current).show("slow");
+        //find all inputs and focus it so title will be initialize.
+        $(showDataRef.current).find('input').focus();
     }
 
     const onEditHide = () =>{

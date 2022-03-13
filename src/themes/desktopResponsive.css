@@ -17,6 +17,7 @@
     }
     .settings{
         width: 100%;
+        background-color: rgb(0, 0, 0, 0.2);
     }
     .settings .centered-animate{
         width:50%;
@@ -24,10 +25,16 @@
     .hide-on-desktop{
         display: none;
     }
+    .data-entry-settings-container .input-entry div{
+        width: 96%;
+    }
     .data-entry-settings-container .input-entry input{
         width: 96%;
     }
     .data-entry-settings-container .input-entry textarea{
-        width: 96%;
+        width: 99%;
+    }
+    .data-entry-settings-container .input-entry svg{
+        width: 20px;
     }
 }

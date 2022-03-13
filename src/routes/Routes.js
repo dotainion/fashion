@@ -1,5 +1,6 @@
 export const routes = {
     pageNotFound: "*",
+    landingPage: "/landing/page",
     home: "/",
     default: "/",
     singin: "/sign/in",
